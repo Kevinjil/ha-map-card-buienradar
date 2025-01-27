@@ -13,8 +13,6 @@ Then, install the plugin using one of these options:
 #### Manual
 Copy `ha-map-card-buienradar.js` to the `www` folder of your Home Assistance configuration.
 
-Note: with a manual installation, the `url` in the configuration should be `/local/ha-map-card-buienradar.js`
-
 ## Configuration
 Add the [ha-map-card](https://github.com/nathan-gs/ha-map-card) custom card to your Home Assistant dashboard.
 
@@ -44,7 +42,9 @@ entities:
     size: 15
 plugins:
   - name: buienradar
-    url: /local/community/ha-map-card-buienradar/ha-map-card-buienradar.js
+    hacs:
+      module: ha-map-card-buienradar
+      file: ha-map-card-buienradar.js
     options:
       delaySeconds: 0.75
       imageRange:
@@ -53,4 +53,12 @@ plugins:
         skip: 0
       opacity: 0.7
       refreshSeconds: 300
+```
+
+Note: with a manual installation, use the following as base configuration for the plugin:
+```yaml
+  - name: buienradar
+    url: /local/ha-map-card-buienradar.js
+    options:
+      ...
 ```
